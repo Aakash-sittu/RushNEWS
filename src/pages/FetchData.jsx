@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import addNotification from 'react-push-notification';
 
 const FetchData = () => {
+
+    const notif = () => {
+        addNotification({
+            title: "Support RUSSIA",
+            subtitle: 'Star dedo',
+            message: 'PKMKB',
+            theme: 'darkblue',
+            native: true
+        })
+    }
 
     const [Data, setData] = useState('')
     const fetchdata = async () => {
         await axios.get("https://newsapi.in/newsapi/search.php?key=x4sYPg30zwEaZXbW2QzskpYXiIU3rm&q=russia").then((res) => setData(res.data.News))
 
     }
-    useEffect(() => { fetchdata() }, [])
-
+    useEffect(() => { fetchdata(); notif() }, [])
+    //useEffect(() => { notif() }, [])
+    //notif()
     return (
-        <div className='container'>
+        <div className='container' style={{
+            maxWidth: '1140px', '@media (max-width: 768px)': {
+                maxWidth: '80%',
+                display: 'block',
+            },
+        }}>
             <div className='my-3 container d-flex justify-content-center align-items-center flex-column'>
                 {Data ? Data.map((item, ind) => <>
                     <div className='container my-3' style={{ width: "750px", boxShadow: "2px 2px 10px silver", borderRadius: "10px" }}>
