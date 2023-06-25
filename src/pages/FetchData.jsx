@@ -1,27 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import addNotification from 'react-push-notification';
+
 
 const FetchData = () => {
 
-    const notif = () => {
-        addNotification({
-            title: "Support RUSSIA",
-            subtitle: 'Star dedo',
-            message: 'PKMKB',
-            theme: 'darkblue',
-            native: true
-        })
-    }
+
 
     const [Data, setData] = useState('')
     const fetchdata = async () => {
         await axios.get("https://newsapi.in/newsapi/search.php?key=x4sYPg30zwEaZXbW2QzskpYXiIU3rm&q=russia").then((res) => setData(res.data.News))
 
     }
-    useEffect(() => { fetchdata(); notif() }, [])
-    //useEffect(() => { notif() }, [])
-    //notif()
+    useEffect(() => { fetchdata(); }, [])
+
     return (
         <div className='container' style={{
             maxWidth: '1140px', '@media (max-width: 768px)': {
