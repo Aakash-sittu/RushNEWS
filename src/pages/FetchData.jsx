@@ -8,7 +8,7 @@ const FetchData = () => {
 
     const [Data, setData] = useState('')
     const fetchdata = async () => {
-        await axios.get("https://newsapi.in/newsapi/search.php?key=x4sYPg30zwEaZXbW2QzskpYXiIU3rm&q=russia").then((res) => setData(res.data.News))
+        await axios.get("https://newsapi.in/newsapi/search.php?key=jo9RMJGoEnwIlCz72vH94ydBnqCPLi&q=russia").then((res) => setData(res.data.News))
 
     }
     useEffect(() => { fetchdata(); }, [])
